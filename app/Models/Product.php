@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    const PREPARANDO = 1;
+    const PUBLICADO = 2;
+
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
@@ -22,7 +25,7 @@ class Product extends Model
 
     public function colors() //relacion muchos a muchos, desde productos a colores 
     {
-        return $this->belongsTo(Color::class);
+        return $this->belongsToMany(Color::class);
     }
 
     public function sizes() //relacion uno a muchos, desde productos a talla
